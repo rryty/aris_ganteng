@@ -1,0 +1,106 @@
+======================================================================================================================
+			| Nama : Gusti Aries Purnama | Kelas R58 | Npm : 201743502448 |
+======================================================================================================================
+
+Tugas PBO 
+Bangun Datar : Lingkaran
+Bangun Ruang : Bola 
+
+======================================================
+Parent Class ( Lingkaran )
+======================================================
+
+import java.text.DecimalFormat;
+public class lingkaran {
+    DecimalFormat df = new DecimalFormat("#.#");
+    double r;
+    double p = 3.14;
+    
+    public lingkaran ( double r ) {
+        this.r = r;
+    }
+    
+    double l() {
+        double l = r * r * p;
+        return l;
+    }
+    
+    double k() {
+        double k = 2 * p * r;
+        return k;
+    }
+    
+    public void cetak (){
+        System.out.println("");
+        System.out.println("---------------------------------------------");
+        System.out.println("Ket : r = Jari - jari, phi = 3.14 atau 22/7");
+        System.out.println("---------------------------------------------");
+        System.out.println("");
+        System.out.println("Rumus Luas Lingkaran : phi * r * r");
+        System.out.println("---------------------------------------------");
+        System.out.println("Luas Lingkaran : " +df.format(l()));
+        System.out.println("");
+        System.out.println("Rumus Keliling Lingkaran : 2 * phi * r");
+        System.out.println("---------------------------------------------");
+        System.out.println("Keliling Lingkaran : " +df.format(k()));
+    }
+}
+
+======================================================
+Child Class ( Bola )
+======================================================
+
+import java.text.DecimalFormat;
+public class bola extends lingkaran{
+    DecimalFormat df = new DecimalFormat("#.#");
+    public bola ( double r ) {
+        super(r);
+    }
+    
+    double lp () {
+        double lp = r * r * p * 4;
+        return lp;
+    }
+    
+    double r3() {
+        double r3 = r * r * r;
+        return r3;
+    }
+    
+    double v () {
+        double v = r3() * p * 4/3;
+        return v;
+    }
+    
+    void cetak1 () {
+        System.out.println("");
+        System.out.println("Rumus Luas Permukaan Bola : r * r * phi * 4");
+        System.out.println("---------------------------------------------");
+        System.out.println("Luas Permukaan Bola : "+df.format(lp()));
+        System.out.println("");
+        System.out.println("Rumus Volume Bola : r * r * r * phi * 4/3");
+        System.out.println("---------------------------------------------");
+        System.out.println("Volume Bola : "+df.format(v()));
+    }
+}
+
+======================================================
+Main Class ( Utama )
+======================================================
+
+import java.util.Scanner;
+
+public class main {
+   public static void main ( String args [] ) {
+       double r;
+       Scanner s = new Scanner (System.in);
+       
+       System.out.print("Masukan Jari -Jari : ");
+       r = s.nextDouble();
+       lingkaran lk = new lingkaran(r);
+       bola bl = new bola(r);
+       
+       lk.cetak();
+       bl.cetak1();
+   }
+}
