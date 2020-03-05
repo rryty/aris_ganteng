@@ -1,0 +1,235 @@
+======================================================================================================================
+			| Nama : Gusti Aries Purnama | Kelas R58 | Npm : 201743502448 |
+======================================================================================================================
+
+Tugas PBO 
+Program Perpustakaan ( Peminjaman )
+
+======================================================
+Abstract Class / Parent ( data )
+======================================================
+
+public abstract class data {
+    private String nm_bk;
+    private String nm_mhs;
+    
+    data ( String nmb, String nmhs ) {
+        nm_bk = nmb;
+        nm_mhs = nmhs;
+    }
+    
+    public String namaBuku() {
+        return nm_bk;
+    }
+    
+    public String namaMhs() {
+        return nm_mhs;
+    }
+    
+    public abstract void total();
+}
+
+======================================================
+Child Class ( mhs )
+======================================================
+
+public final class mhs extends data {
+    private String npm, kls, sms;
+    private String nama, np, kl, ss;
+    
+    mhs (String nmhs, String npm, String kls, String sms) {
+        super("",nmhs);
+        this.npm = npm;
+        this.kls = kls;
+        this.sms = sms;
+    }
+    
+    public String nmhs() {
+        String nmhs = nama;
+        return super.namaMhs();
+    }
+    
+    public String npm() {
+        String npm = np;
+        return npm;
+    }
+    
+    public String kelas() {
+        String kelas = kl;
+        return kls;
+    }
+    
+    public String smstr() {
+        String smstr = ss;
+        return sms;
+    }
+    
+    public void total() {
+        System.out.println("");
+        System.out.println("==========================================");
+        System.out.println("============ Data Pinjam Buku ============");
+        System.out.println("==========================================");
+        System.out.println("");
+        System.out.println("Nama Mahasiswa  : "+nmhs());
+        System.out.println("Npm             : "+this.npm);
+        System.out.println("Kelas           : "+kelas());
+        System.out.println("Semester        : "+smstr());
+        System.out.println("");
+    }
+}
+
+======================================================
+Child Class ( buku )
+======================================================
+
+public final class buku extends data {
+    private String nbk, pnrb, th;
+    
+    buku ( String nm_bk, String nbk, String pnrb, String th ) {
+        super(nm_bk,"");
+        this.nbk = nbk;
+        this.pnrb = pnrb;
+        this.th = th;
+    }
+    
+    public String nm_buku() {
+        return super.namaBuku();
+    }
+    
+    public String nbk() {
+        return nbk;
+    }
+    
+    public String pnrb() {
+        return pnrb;
+    }
+    
+    public String th() {
+        return th;
+    }
+        
+    public void total() {
+        System.out.println("");
+        System.out.println("Terimakasih");
+    }
+}
+
+======================================================
+Main Class ( perpus )
+======================================================
+
+import java.util.Scanner;
+public class perpus {
+    public static void main ( String args [] ) {
+       Scanner x = new Scanner ( System.in );
+       
+       String nama, np, kl, ss; 
+       int lp;
+       
+       System.out.println("==========================================");
+       System.out.println("============== Perpustakaan ==============");
+       System.out.println("==========================================");
+       System.out.println("");
+       
+       System.out.print("Masukan Nama     : ");
+       nama = x.nextLine();
+       System.out.print("Masukan NPM      : ");
+       np = x.next();
+       System.out.print("Masukan Kelas    : ");
+       kl = x.next();
+       System.out.print("Masukan Semester : ");
+       ss= x.next();
+                  
+       mhs m = new mhs(nama, np, kl, ss);
+       
+       int pilih = 5;
+       System.out.println("");
+       System.out.println("Pilih Buku : \n 1. Algoritma \n 2. Pajak \n 3. Visual Basic \n 4. Detective Conan \n 5. HTML dan CSS dasar");
+       System.out.println("");
+       System.out.print("Pilihan  : ");
+       pilih = x.nextInt();
+       switch (pilih) {
+           case 1 : buku a = new buku ("Algoritma", "2554", "Airlangga", "2010");
+                    System.out.println("");            
+                    System.out.print("Masukan Lama Pinjam /minggu : ");
+                    lp = x.nextInt();
+                    m.total();
+                    System.out.println("Nama Buku       : " +a.nm_buku());
+                    System.out.println("Kode Buku       : " +a.nbk());
+                    System.out.println("Jenis Buku      : Komputer");
+                    System.out.println("Penerbit        : " +a.pnrb());
+                    System.out.println("Tahun           : " +a.th());
+                    System.out.println("");
+                    System.out.println("Lama Pinjam : "+lp+" minggu");
+                    System.out.println("Harga sewa perminggu = Rp. 5000");
+                    System.out.println("Total                = Rp. " +lp*5000);
+                    a.total();
+                break;
+           case 2:  buku b = new buku ("Pajak", "2114", "Gramedia", "2011");
+                    System.out.println("");            
+                    System.out.print("Masukan Lama Pinjam /minggu : ");
+                    lp = x.nextInt();
+                    m.total();
+                    System.out.println("Nama Buku       : " +b.nm_buku());
+                    System.out.println("Kode Buku       : " +b.nbk());
+                    System.out.println("Jenis Buku      : Akuntansi");
+                    System.out.println("Penerbit        : " +b.pnrb());
+                    System.out.println("Tahun           : " +b.th());
+                    System.out.println("");
+                    System.out.println("Lama Pinjam : "+lp+" minggu");
+                    System.out.println("Harga sewa perminggu = Rp. 3000");
+                    System.out.println("Total                = Rp. " +lp*3000);
+                    b.total();
+                break;
+           case 3 : buku c = new buku ("Visual Basic", "2511", "Netmedia", "2014");
+                    System.out.println("");            
+                    System.out.print("Masukan Lama Pinjam /minggu : ");
+                    lp = x.nextInt();
+                    m.total();
+                    System.out.println("Nama Buku       : " +c.nm_buku());
+                    System.out.println("Kode Buku       : " +c.nbk());
+                    System.out.println("Jenis Buku      : Komputer");
+                    System.out.println("Penerbit        : " +c.pnrb());
+                    System.out.println("Tahun           : " +c.th());
+                    System.out.println("");
+                    System.out.println("Lama Pinjam : "+lp+" minggu");
+                    System.out.println("Harga sewa perminggu = Rp. 5000");
+                    System.out.println("Total                = Rp. " +lp*5000);
+                    c.total();
+                break;     
+           case 4 : buku d = new buku ("Detective Conan", "2901", "Aniplex", "2019");
+                    System.out.println("");            
+                    System.out.print("Masukan Lama Pinjam /minggu : ");
+                    lp = x.nextInt();
+                    m.total();
+                    System.out.println("Nama Buku       : " +d.nm_buku());
+                    System.out.println("Kode Buku       : " +d.nbk());
+                    System.out.println("Jenis Buku      : Komik");
+                    System.out.println("Penerbit        : " +d.pnrb());
+                    System.out.println("Tahun           : " +d.th());
+                    System.out.println("");
+                    System.out.println("Lama Pinjam : "+lp+" minggu");
+                    System.out.println("Harga sewa perminggu = Rp. 8000");
+                    System.out.println("Total                = Rp. " +lp*8000);
+                    d.total();
+                break;
+           case 5 : buku e = new buku ("HTML da CSS dasar", "2591", "Sublime", "2017");
+                    System.out.println("");            
+                    System.out.print("Masukan Lama Pinjam /minggu : ");
+                    lp = x.nextInt();
+                    m.total();
+                    System.out.println("Nama Buku       : " +e.nm_buku());
+                    System.out.println("Kode Buku       : " +e.nbk());
+                    System.out.println("Jenis Buku      : Komputer");
+                    System.out.println("Penerbit        : " +e.pnrb());
+                    System.out.println("Tahun           : " +e.th());
+                    System.out.println("");
+                    System.out.println("Lama Pinjam : "+lp+" minggu");
+                    System.out.println("Harga sewa perminggu = Rp. 5000");
+                    System.out.println("Total                = Rp. " +lp*5000);
+                    e.total();
+                 break;
+  
+           }
+    }
+}
